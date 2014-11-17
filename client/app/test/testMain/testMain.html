@@ -1,0 +1,23 @@
+<div class="col-md-12">
+  <h1>Test Page html:(v0.0.1) js:{{vm.jsVersion}}</h1>
+  <div class="row top-buffer">
+    <button class="btn btn-default" ng-click="vm.queryYouTube()">Query YouTube</button>
+    <button class="btn btn-default" ng-click="vm.getChannelInfo()">Get Channel Info</button>
+    <button class="btn btn-default" ng-click="vm.getChannelInfoFromDB()">Get Channel Info From DB</button>
+    <button class="btn btn-default" ng-click="vm.dumpJson()">Dump JSON</button>
+  </div>
+  <div class="row top-buffer">
+    <button class="btn btn-default" ng-click="vm.crawler()">Crawler</button>
+  </div>
+  <div class="row top-buffer">
+    <button class="btn btn-default" ng-click="vm.testQueue()">Test Queue</button>
+  </div>
+  <div class="row top-buffer">
+    <button class="btn btn-default" ng-click="vm.testMessageCenter()">Test Message Center</button>
+    <button class="btn btn-default" ng-click="vm.testSweetAlert()">Test Sweet Message</button>
+  </div>
+
+  <div class="row top-buffer">
+    <pre>{{vm.answer}}</pre>
+  </div>
+</div>

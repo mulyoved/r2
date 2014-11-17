@@ -1,0 +1,73 @@
+<div class="col-md-12">
+
+  <h1>YouTube Channel Information</h1>
+
+  <form class="row form-inline" name="myForm" role="form" ng-submit="vm.getChannelInfo()">
+    <div class="form-group">
+      <label class="sr-only for="youTubeChannelID">YouTubeChannelID</label>
+      <input
+        id="youTubeChannelID"
+        type="text"
+        placeholder="Channel ID"
+        class="form-control"
+        name="youTubeChannelID"
+        ng-model="vm.data.channelId"
+        minlength="6"
+        required />
+
+      <div ng-messages="myForm.colorCode.$error" ng-if="myForm.$submitted || myForm.colorCode.$touched">
+        <div ng-message="required">Missing Value</div>
+        <div ng-message="minlength">Minimum Length</div>
+        <div ng-message="pattern">Must match</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  <button class="btn btn-default" ng-click="vm.getFromDB()">Test": From DB</button>
+
+
+  <div class="row top-buffer">
+    <table class="table table-bordered">
+      <tr><td>channelId</td><td><a ng-href="{{vm.format.channelId.url}}">{{vm.format.channelId.text}}</a></td></tr>
+      <tr><td>title</td><td>{{vm.format.title}}</td></tr>
+      <tr><td>description</td><td>{{vm.format.description}}</td></tr>
+      <tr><td>publishedAt</td><td>{{vm.format.publishedAt}}</td></tr>
+      <tr><td>thumbnails</td><td><img ng-src="{{vm.format.thumbnails}}"></td></tr>
+      <tr><td>googlePlusUserId</td><td>{{vm.format.googlePlusUserId}}</td></tr>
+      <tr><td>viewCount</td><td>{{vm.format.viewCount}}</td></tr>
+      <tr><td>subscriberCount</td><td>{{vm.format.subscriberCount}}</td></tr>
+      <tr><td>videoCount</td><td>{{vm.format.videoCount}}</td></tr>
+      <tr><td>brand_title</td><td>{{vm.format.brand_title}}</td></tr>
+      <tr><td>brand_keywords</td><td>{{vm.format.brand_keywords}}</td></tr>
+      <tr><td>image</td><td><img ng-src="{{vm.format.image}}"></td></tr>
+      <tr><td>mobile_image</td><td><img ng-src="{{vm.format.mobile_image}}"></td></tr>
+      <tr><td>brand_keywords</td><td>{{vm.format.brand_keywords}}</td></tr>
+
+      <tr><td><b>Related Playlist</b></td></tr>
+      <tr ng-repeat="(key, val) in vm.format.relatedPlaylists">
+        <td>{{key}}</td>
+        <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+      </tr>
+
+      <tr><td><b>Topics</b></td></tr>
+      <tr ng-repeat="val in vm.format.topic">
+        <td></td>
+        <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+      </tr>
+
+      <tr><td><b>Featured Channels</b></td></tr>
+      <tr ng-repeat="val in vm.format.featuredChannels">
+        <td></td>
+        <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+        <!-- <td><a ng-href="{{val.url}}">{{val.text}}</a></td> -->
+      </tr>
+
+    </table>
+  </div>
+
+  <div class="row top-buffer">
+    <pre>{{vm.format}}</pre>
+    <pre >{{vm.answer}}</pre>
+  </div>
+
+</div>

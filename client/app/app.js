@@ -3,9 +3,15 @@
 angular.module('r2App', [
   'ngCookies',
   'ngResource',
+  'ngMessages',
   'ngSanitize',
+  'restangular',
   'btford.socket-io',
   'ui.router',
+  'ui.grid',
+  'ui.grid.selection',
+  'MessageCenterModule',
+  'oitozero.ngSweetAlert',
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -42,9 +48,18 @@ angular.module('r2App', [
     };
   })
 
+  .config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('/api');
+    RestangularProvider.setRestangularFields({
+      id: "_id"
+    });
+  })
+
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
+    $rootScope.$on('$stateChangeStart', function (event, next, toParams, fromState, fromParams) {
+      console.log('$stateChangeStart to '+next.to+'- fired when the transition begins. toState,toParams : \n',next, toParams);
+
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');

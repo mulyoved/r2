@@ -1,0 +1,36 @@
+<table class="table table-bordered">
+  <tr><td>Id</td><td><a ng-href="test/channelDetail/{{vm.format._id}}">{{vm.format._id}}</a></td></tr>
+  <tr><td>channelId</td><td><a ng-href="{{vm.format.channelId.url}}">{{vm.format.channelId.text}}</a></td></tr>
+  <tr><td>title</td><td>{{vm.format.title}}</td></tr>
+  <tr><td>description</td><td>{{vm.format.description}}</td></tr>
+  <tr><td>publishedAt</td><td>{{vm.format.publishedAt}}</td></tr>
+  <tr><td>thumbnails</td><td><img ng-src="{{vm.format.thumbnails}}"></td></tr>
+  <tr><td>googlePlusUserId</td><td>{{vm.format.googlePlusUserId}}</td></tr>
+  <tr><td>viewCount</td><td>{{vm.format.viewCount}}</td></tr>
+  <tr><td>subscriberCount</td><td>{{vm.format.subscriberCount}}</td></tr>
+  <tr><td>videoCount</td><td>{{vm.format.videoCount}}</td></tr>
+  <tr><td>brand_title</td><td>{{vm.format.brand_title}}</td></tr>
+  <tr><td>brand_keywords</td><td>{{vm.format.brand_keywords}}</td></tr>
+  <tr><td>image</td><td><img ng-src="{{vm.format.image}}"></td></tr>
+  <tr><td>mobile_image</td><td><img ng-src="{{vm.format.mobile_image}}"></td></tr>
+
+  <tr><td><b>Related Playlist</b></td></tr>
+  <tr ng-repeat="(key, val) in vm.format.relatedPlaylists">
+    <td>{{key}}</td>
+    <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+  </tr>
+
+  <tr><td><b>Topics</b></td></tr>
+  <tr ng-repeat="val in vm.format.topic">
+    <td></td>
+    <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+  </tr>
+
+  <tr><td><b>Featured Channels</b></td></tr>
+  <tr ng-repeat="val in vm.format.featuredChannels">
+    <td></td>
+    <td><a ng-href="{{val.url}}">{{val.text}}</a></td>
+    <!-- <td><a ng-href="{{val.url}}">{{val.text}}</a></td> -->
+  </tr>
+
+</table>

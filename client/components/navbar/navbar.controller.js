@@ -5,7 +5,20 @@ angular.module('r2App')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+      {
+        title: 'Test',
+        link: '/test/testMain'
+      },
+      {
+        title: 'ChannelInfo',
+        link: '/test/getChannelInfo'
+      },
+      {
+        title: 'Channels',
+        link: '/test/channelList'
+      }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
